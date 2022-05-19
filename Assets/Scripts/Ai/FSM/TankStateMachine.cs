@@ -33,6 +33,8 @@ public class TankStateMachine : MonoBehaviour
 
     public bool HasTarget { get; private set; }
 
+    public string CurrentStateName { get; set; }
+
     private void Awake()
     {
         _animator.SetInteger("healthReserve", _agent.HealthReserve);
@@ -54,9 +56,14 @@ public class TankStateMachine : MonoBehaviour
     {
         if (HasTarget)
         {
-            float distance = Vector3.Distance(Target.Transform.position, transform.position);
-            _animator.SetFloat("distanceToTarget", distance);
+            CheckDistance();
         }
+    }
+
+    private void CheckDistance()
+    {
+        float distance = Vector3.Distance(Target.Transform.position, transform.position);
+        _animator.SetFloat("distanceToTarget", distance);
     }
 
     private void OnDie()

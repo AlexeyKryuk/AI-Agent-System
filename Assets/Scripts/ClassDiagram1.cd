@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Tank" Collapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <InheritanceLine Type="Agent" ManuallyRouted="true">
+      <Path>
+        <Point X="4.875" Y="5.04" />
+        <Point X="4.875" Y="5.304" />
+        <Point X="3.75" Y="5.304" />
+        <Point X="3.75" Y="5.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Ai\Agent\Tank\Tank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agent">
+    <Position X="3.75" Y="1.75" Width="2.25" />
+    <Members>
+      <Method Name="Awake" Hidden="true" />
+      <Method Name="OnDisable" Hidden="true" />
+      <Method Name="OnEnable" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAAAAgAAAAECQAAEAAAAAYAAAIQAAACEA=</HashCode>
+      <FileName>Assets\Scripts\Ai\Agent\Agent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_health" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Health">
+    <Position X="7" Y="2.25" Width="1.75" />
+    <Members>
+      <Field Name="_maxValue" Hidden="true" />
+      <Field Name="_value" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAgAAAAAAAAAEAAAAAAAAAgACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Ai\Agent\Health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankStateMachine">
+    <Position X="0.75" Y="1.75" Width="2" />
+    <Members>
+      <Field Name="_animator" Hidden="true" />
+      <Field Name="_lastTarget" Hidden="true" />
+      <Field Name="_target" Hidden="true" />
+      <Method Name="Awake" Hidden="true" />
+      <Method Name="OnDamaged" Hidden="true" />
+      <Method Name="OnDie" Hidden="true" />
+      <Method Name="OnDisable" Hidden="true" />
+      <Method Name="OnEnable" Hidden="true" />
+      <Method Name="Update" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AIYAAACAAAAEABAAAAAAACAAQAAAAAAIIAAACAAACEA=</HashCode>
+      <FileName>Assets\Scripts\Ai\FSM\TankStateMachine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_agent" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="5.25" Y="5.5" Width="1.5" />
+    <InheritanceLine Type="Agent" ManuallyRouted="true">
+      <Path>
+        <Point X="4.875" Y="5.04" />
+        <Point X="4.875" Y="5.304" />
+        <Point X="6" Y="5.304" />
+        <Point X="6" Y="5.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

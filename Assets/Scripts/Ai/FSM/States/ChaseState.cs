@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseState : StateMachineBehaviour
+public class ChaseState : State
 {
     [SerializeField] private float _moveSpeed;
 
@@ -11,6 +11,7 @@ public class ChaseState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
         _movement = animator.GetComponentInChildren<Tank>().GetComponent<Movement>();
         _target = animator.GetComponentInChildren<TankStateMachine>().Target;
     }

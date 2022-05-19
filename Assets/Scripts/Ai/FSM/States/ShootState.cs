@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootState : StateMachineBehaviour
+public class ShootState : State
 {
     [SerializeField] private float _recharge;
     [SerializeField] private Projectile _projectile;
@@ -15,6 +15,7 @@ public class ShootState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
         _target = animator.GetComponentInChildren<TankStateMachine>().Target;
         _own = animator.GetComponentInChildren<Tank>();
         _movement = animator.GetComponentInChildren<Movement>();

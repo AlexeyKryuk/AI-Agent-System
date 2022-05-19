@@ -19,9 +19,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.attachedRigidbody == _rigidbody)
+            return;
+
         if (other.TryGetComponent(out Agent target))
         {
             target.ApplyDamage(_owner, _damage);
+            Debug.Log("applydamage");
             Destroy(gameObject);
         }
     }
@@ -45,7 +49,8 @@ public class Projectile : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
-        
+
+        Debug.Log("Destroy");
         Destroy(gameObject);
     }
 }

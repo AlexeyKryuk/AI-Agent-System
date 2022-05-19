@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine;
 using System;
 
-public class FleeState : StateMachineBehaviour
+public class FleeState : State
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _fieldOfView = 90f;
@@ -34,8 +34,10 @@ public class FleeState : StateMachineBehaviour
     private float _delay = 0.25f;
     private float _initialSpeed;
 
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+
         _transform = animator.GetComponentInChildren<Tank>().GetComponent<Transform>();
         _target = animator.GetComponentInChildren<TankStateMachine>().Target;
         _navMeshAgent = animator.GetComponentInChildren<NavMeshAgent>();
@@ -44,6 +46,7 @@ public class FleeState : StateMachineBehaviour
         _agent.Damaged += OnDamaged;
         _initialSpeed = _navMeshAgent.speed;
         _navMeshAgent.speed = _moveSpeed;
+
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -76,6 +79,7 @@ public class FleeState : StateMachineBehaviour
         return false;
     }
 
+    // Проверить, находится ли враг в прямой видимости
     private void CheckLineOfSight(Transform Target)
     {
         Vector3 direction = (Target.transform.position - _transform.position).normalized;
@@ -132,7 +136,7 @@ public class FleeState : StateMachineBehaviour
                 }
                 else
                 {
-                    // Since the previous spot wasn't facing "away" enough from teh target, we'll try on the other side of the object
+                    // Так как предыдущая точка не была обращена достаточно «в сторону» от цели, мы попробуем другую сторону объекта.
                     if (NavMesh.SamplePosition(Colliders[i].transform.position - (Target.position - hit.position).normalized * 4, out NavMeshHit hit2, 50f, _navMeshAgent.areaMask))
                     {
                         if (!NavMesh.FindClosestEdge(hit2.position, out hit2, _navMeshAgent.areaMask))
